@@ -33,7 +33,7 @@
       width: 18%;
       left: 41%;
       top: 50%;
-      height: 40%;
+      height: 42%;
       z-index: 1;
       text-align: center;
       border: 5px solid black;
@@ -74,6 +74,30 @@
       padding: 0px;
     }
 
+    .musicButton:hover {
+      width: 66.7%;
+    }
+
+    .soundButton:hover {
+      width: 80%;
+    }
+
+    #musicButtonOff {
+      display: none;
+    }
+
+    #soundButtonOff {
+      display: none;
+    }
+
+    .div3 {
+      display: inline-block;
+      vertical-align: middle;
+      width: 20%;
+      height: 10%;
+      top: 80%;
+    }
+
   </style>
 
 </head>
@@ -100,7 +124,16 @@
 
     </a>
     <p onclick="playAudio();">Play Music</p>
-
+    <!-- Music icons -->
+    <div class="div3">
+      <img class="musicButton" id="musicButtonOn" width="75%" onclick="toggleMusicButton();" src="AMusicOn.png" alt="Music Button">
+      <img class="musicButton" id="musicButtonOff" width="75%" onclick="toggleMusicButton();" src="AMusicOff.png" alt="Music Button">
+    </div>
+    <!-- Sound icons -->
+    <div class="div3">
+      <img class="soundButton" id="soundButtonOn" width="90%" onclick="toggleSoundButton();" src="ASoundOn.png" alt="Sound Button">
+      <img class="soundButton" id="soundButtonOff" width="90%" onclick="toggleSoundButton();" src="ASoundOff.png" alt="Sound Button">
+    </div>
   </div>
 
 
@@ -122,11 +155,39 @@
 
 </body>
 <script>
-  var audio = document.getElementById("audio")
+  var audio = document.getElementById("audio");
+  var musOff = document.getElementById("musicButtonOff");
+  var musOn = document.getElementById("musicButtonOn");
+
+  var souOff = document.getElementById("soundButtonOff");
+  var souOn = document.getElementById("soundButtonOn");
 
   // Function that plays the audio for the music
   function playAudio() {
+    audio.volume = 0.6;
     audio.play();
+  }
+
+  function toggleMusicButton() {
+    if(musOff.style.display === "none") {
+      musOn.style.display = "none";
+      musOff.style.display = "block";
+      audio.muted = true;
+    } else {
+      musOff.style.display = "none";
+      musOn.style.display = "block";
+      audio.muted = false;
+    }
+  }
+
+  function toggleSoundButton() {
+    if(souOff.style.display === "none") {
+      souOn.style.display = "none";
+      souOff.style.display = "block";
+    } else {
+      souOff.style.display = "none";
+      souOn.style.display = "block";
+    }
   }
 
 </script>
