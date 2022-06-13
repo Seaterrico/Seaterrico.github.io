@@ -125,14 +125,6 @@
       width: 80%;
     }
 
-    #musicButtonOff {
-      display: none;
-    }
-
-    #soundButtonOff {
-      display: none;
-    }
-
     .div3 {
       display: inline-block;
       vertical-align: middle;
@@ -171,35 +163,31 @@
       <p>Singleplayer</p>
       <p>Shop</p>
       <p>Settings</p>
-
     </a>
-    <p onclick="playAudio();">Play Music</p>
 
-<!-- Private Policy -->
+    <!-- Music icons -->
+    <div class="div3">
+      <img class="musicButton" id="musicButton" width="75%" onclick="toggleMusicButton();" src="AMusicOn.png" alt="Music Button">
+    </div>
+    <!-- Sound icons -->
+    <div class="div3">
+      <img class="soundButton" id="soundButton" width="90%" onclick="toggleSoundButton();" src="ASoundOn.png" alt="Sound Button">
+    </div>
+  </div>
+
+  <!-- Private Policy -->
 <div class="div5">
   <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
     <p class="bottomText">Private Policy</p>
-
+  </a>
 </div>
 
 <!-- Cookie Policy -->
 <div class="div6">
   <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
     <p class="bottomText">Cookie Policy</p>
+  </a>
 </div>
-
-
-    <!-- Music icons -->
-    <div class="div3">
-      <img class="musicButton" id="musicButtonOn" width="75%" onclick="toggleMusicButton();" src="AMusicOn.png" alt="Music Button">
-      <img class="musicButton" id="musicButtonOff" width="75%" onclick="toggleMusicButton();" src="AMusicOff.png" alt="Music Button">
-    </div>
-    <!-- Sound icons -->
-    <div class="div3">
-      <img class="soundButton" id="soundButtonOn" width="90%" onclick="toggleSoundButton();" src="ASoundOn.png" alt="Sound Button">
-      <img class="soundButton" id="soundButtonOff" width="90%" onclick="toggleSoundButton();" src="ASoundOff.png" alt="Sound Button">
-    </div>
-  </div>
 
 
   <!-- Account box -->
@@ -221,11 +209,11 @@
 </body>
 <script>
   var audio = document.getElementById("audio");
-  var musOff = document.getElementById("musicButtonOff");
-  var musOn = document.getElementById("musicButtonOn");
+  var mus = document.getElementById("musicButton");
+  var musCount = 0;
+  var souCount = 2;
 
-  var souOff = document.getElementById("soundButtonOff");
-  var souOn = document.getElementById("soundButtonOn");
+  var sou = document.getElementById("soundButton");
 
   // Function that plays the audio for the music
   function playAudio() {
@@ -234,28 +222,31 @@
   }
 
   function toggleMusicButton() {
-    if(musOff.style.display === "none") {
-      musOn.style.display = "none";
-      musOff.style.display = "block";
-      audio.muted = true;
-    } else {
-      musOff.style.display = "none";
-      musOn.style.display = "block";
+    if(musCount == 0) {
+      audio.volume = 0.4;
+      audio.play();
+      musCount++;
+    }
+
+    if(audio.muted) {
+      mus.src = "AMusicOn.png";
       audio.muted = false;
+    } else {
+      mus.src = "AMusicOff.png";
+      audio.muted = true;
     }
   }
 
   function toggleSoundButton() {
-    if(souOff.style.display === "none") {
-      souOn.style.display = "none";
-      souOff.style.display = "block";
+    if(souCount%2 == 0) {
+      sou.src = "ASoundOff.png";
+      souCount++;
     } else {
-      souOff.style.display = "none";
-      souOn.style.display = "block";
+      sou.src = "ASoundOn.png";
+      souCount++;
     }
   }
 
 </script>
-
 
 </html>
