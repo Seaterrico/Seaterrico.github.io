@@ -137,6 +137,7 @@
     /* Class dealing with <p> */
     p {
       font-size: 2vmin; /* Changes font size to 3% of the smallest screen dimension (height or width) */
+      margin: 4%;
     }
 
     .bottomText {
@@ -186,6 +187,18 @@
       font-size: 3vh;
     }
 
+    .div8 {
+      width: 80%;
+      height: 20%;
+      margin-left: 10%;
+      text-align: center;
+      border: 1px solid transparent;
+    }
+
+    .div8:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
     a {
       color: blanchedalmond;
     }
@@ -216,11 +229,21 @@
 <!-- Middle Box -->
   <div class="div0">
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-      <p>Singleplayer</p>
-      <p>Multiplayer</p>
-      <p>Tutorial</p>
-      <p>Shop</p>
-      <p>Settings</p>
+      <div class="div8">
+        <p>Singleplayer</p>
+      </div>
+      <div class="div8">
+        <p>Multiplayer</p>
+      </div>
+      <div class="div8">
+        <p>Tutorial</p>
+      </div>
+      <div class="div8">
+        <p>Shop</p>
+      </div>
+      <div class="div8">
+        <p>Settings</p>
+      </div>
     </a>
   </div>
 
@@ -259,7 +282,7 @@
   <!-- Sound icon -->
   <div class="div3">
     <img class="soundButton" id="soundButton" height="135%" onclick="toggleSoundButton();" src="ASoundOn.png" alt="Sound Button">
-  </div> 
+  </div>
 </div>
 
 
