@@ -199,6 +199,10 @@
       background-color: rgba(255, 255, 255, 0.25);
     }
 
+    .divSettings {
+      display: none;
+    }
+
     a {
       color: blanchedalmond;
     }
@@ -228,10 +232,11 @@
 
 <!-- Middle Box -->
   <div class="div0">
+    <!-- Home Page -->
+    <div onclick="singlePlayer();" class="div8">
+      <p>Singleplayer</p>
+    </div>
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-      <div class="div8">
-        <p>Singleplayer</p>
-      </div>
       <div class="div8">
         <p>Multiplayer</p>
       </div>
@@ -241,10 +246,25 @@
       <div class="div8">
         <p>Shop</p>
       </div>
-      <div class="div8">
+    </a>
+      <div onclick="openSettings();" class="div8">
         <p>Settings</p>
       </div>
-    </a>
+      <!-- Settings Page -->
+      <div class="divSettings">
+        <p>Settings</p>
+      </div>
+      <div class="divSettings">
+        <p>Music Volume</p>
+        <img class="musicVolume" id="musicVolume" onclick="toggleMusicVolume();" src="Sound Ajustment Images/Soundbar2.png" alt="Music Adjustment">
+      </div>
+      <div class="divSettings">
+        <p>Sounds Volume</p>
+        <img class="soundVolume" id="soundVolume" onclick="toggleSoundVolume();" src="Sound Ajustment Images/Soundbar2.png" alt="Sound Adjustment">
+      </div>
+      <div class="divSettings">
+        <p onclick="closeSettings();">Back</p>
+      </div>
   </div>
 
   <!-- Private Policy -->
@@ -307,13 +327,21 @@
   var audio = document.getElementById("audio");
   var mus = document.getElementById("musicButton");
   var musCount = 0;
-  var souCount = 2;
 
   var sou = document.getElementById("soundButton");
+  var souCount = 2;
+
+  var midText = document.getElementsByClassName("div8");
+  var setText = document.getElementsByClassName("divSettings");
+
+  var souVol = document.getElementById("soundVolume");
+  var souVolCount = 2;
+  var musVol = document.getElementById("musicVolume");
+  var musVolCount = 2;
 
   // Function that plays the audio for the music
   function setVolume() {
-    audio.volume = 0.5;
+    audio.volume = 0.4;
   }
 
   function toggleMusicButton() {
@@ -339,6 +367,73 @@
       sou.src = "ASoundOn.png";
       souCount++;
     }
+  }
+
+  function openSettings() {
+    for (let i = 0; i < midText.length; i++) {
+      midText[i].style.display = "none";
+    }
+
+    for (let i = 0; i < setText.length; i++) {
+      setText[i].style.display = "block";
+    }
+  }
+
+  function closeSettings() {
+    for (let i = 0; i < setText.length; i++) {
+      setText[i].style.display = "none";
+    }
+
+    for (let i = 0; i < midText.length; i++) {
+      midText[i].style.display = "block";
+    }
+  }
+
+  function toggleSoundVolume() {
+    if(souVolCount == 2) {
+      souVol.src = "Sound Ajustment Images/Soundbar3.png";
+      souVolCount = 3;
+    } else if(souVolCount == 3) {
+      souVol.src = "Sound Ajustment Images/Soundbar4.png";
+      souVolCount = 4;
+    } else if(souVolCount == 4) {
+      souVol.src = "Sound Ajustment Images/Soundbar5.png";
+      souVolCount = 5;
+    } else if(souVolCount == 5) {
+      souVol.src = "Sound Ajustment Images/Soundbar1.png";
+      souVolCount = 1;
+    } else {
+      souVol.src = "Sound Ajustment Images/Soundbar2.png";
+      souVolCount = 2;
+    }
+  }
+
+  function toggleMusicVolume() {
+    if(musVolCount == 2) {
+      musVol.src = "Sound Ajustment Images/Soundbar3.png";
+      audio.volume = 0.6;
+      musVolCount = 3;
+    } else if(musVolCount == 3) {
+      musVol.src = "Sound Ajustment Images/Soundbar4.png";
+      audio.volume = 0.8;
+      musVolCount = 4;
+    } else if(musVolCount == 4) {
+      musVol.src = "Sound Ajustment Images/Soundbar5.png";
+      audio.volume = 1;
+      musVolCount = 5;
+    } else if(musVolCount == 5) {
+      musVol.src = "Sound Ajustment Images/Soundbar1.png";
+      audio.volume = 0.2;
+      musVolCount = 1;
+    } else {
+      musVol.src = "Sound Ajustment Images/Soundbar2.png";
+      audio.volume = 0.4;
+      musVolCount = 2;
+    }
+  }
+
+  function singlePlayer() {
+    audio.src = "yes.mp4"
   }
 
 </script>
