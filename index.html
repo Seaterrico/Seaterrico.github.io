@@ -200,7 +200,21 @@
     }
 
     .divSettings {
+      width: 80%;
+      margin-left: 10%;
+      text-align: center;
+      border: 1px solid transparent;
       display: none;
+    }
+
+    #back:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    #map {
+      display: none;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     a {
@@ -213,8 +227,11 @@
 
 <body onload="setVolume();">
 
+  <!-- Map (Hidden at start) -->
+  <img id="map" src="Map.png" alt="Map">
+
   <!-- Video for the background -->
-  <video width="100%" height="100%" disablePictureInPicture autoplay muted loop id="bruh.mp4">
+  <video id="video" width="100%" height="100%" disablePictureInPicture autoplay muted loop id="bruh.mp4">
     <source src="bruh4.mp4" type="video/mp4">
   </video>
 
@@ -252,7 +269,9 @@
       </div>
       <!-- Settings Page -->
       <div class="divSettings">
-        <p>Settings</p>
+        <p>Music:</p>
+        <p style="font-size: 1vmin;" onclick="audioMain();">Main Theme</p>
+        <p style="font-size: 1vmin; margin-bottom: 0%;" onclick="audioYes();">Yes</p>
       </div>
       <div class="divSettings">
         <p>Music Volume</p>
@@ -262,8 +281,8 @@
         <p>Sounds Volume</p>
         <img class="soundVolume" id="soundVolume" onclick="toggleSoundVolume();" src="Sound Ajustment Images/Soundbar2.png" alt="Sound Adjustment">
       </div>
-      <div class="divSettings">
-        <p onclick="closeSettings();">Back</p>
+      <div class="divSettings" onclick="closeSettings();" id="back">
+        <p>Back</p>
       </div>
   </div>
 
@@ -324,6 +343,7 @@
 
 </body>
 <script>
+  var video = document.getElementById("video");
   var audio = document.getElementById("audio");
   var mus = document.getElementById("musicButton");
   var musCount = 0;
@@ -332,12 +352,21 @@
   var souCount = 2;
 
   var midText = document.getElementsByClassName("div8");
+  var midBox = document.getElementsByClassName("div0");
+  var nameBox = document.getElementsByClassName("div4");
+  var iconBox = document.getElementsByClassName("div7");
+  var CPBox = document.getElementsByClassName("div6");
+  var PPBox = document.getElementsByClassName("div5");
+  var accountBox = document.getElementsByClassName("div2");
+  var leaderboardBox = document.getElementsByClassName("div1");
   var setText = document.getElementsByClassName("divSettings");
 
   var souVol = document.getElementById("soundVolume");
   var souVolCount = 2;
   var musVol = document.getElementById("musicVolume");
   var musVolCount = 2;
+
+  var map = document.getElementById("map");
 
   // Function that plays the audio for the music
   function setVolume() {
@@ -432,8 +461,46 @@
     }
   }
 
-  function singlePlayer() {
+  function audioYes() {
     audio.src = "yes.mp4"
+  }
+
+  function audioMain() {
+    audio.src = "song3.mp3"
+  }
+
+  function singlePlayer() {
+
+    for (let i = 0; i < midBox.length; i++) {
+      midBox[i].style.display = "none";
+    }
+
+    for (let i = 0; i < PPBox.length; i++) {
+      PPBox[i].style.display = "none";
+    }
+
+    for (let i = 0; i < CPBox.length; i++) {
+      CPBox[i].style.display = "none";
+    }
+
+    for (let i = 0; i < leaderboardBox.length; i++) {
+      leaderboardBox[i].style.display = "none";
+    }
+
+    for (let i = 0; i < accountBox.length; i++) {
+      accountBox[i].style.display = "none";
+    }
+
+    for (let i = 0; i < iconBox.length; i++) {
+      iconBox[i].style.display = "none";
+    }
+
+    for (let i = 0; i < nameBox.length; i++) {
+      nameBox[i].style.display = "none";
+    }
+
+    video.style.display = "none";
+    map.style.display = "block";
   }
 
 </script>
