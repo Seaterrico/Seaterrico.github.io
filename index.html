@@ -200,11 +200,21 @@
     }
 
     .divSettings {
-      width: 80%;
-      margin-left: 10%;
+      width: 100%;
       text-align: center;
       border: 1px solid transparent;
       display: none;
+    }
+
+    .divPlusMinus {
+      display: inline-block;
+      vertical-align: middle;
+      width: 30%;
+    }
+
+    .divMusic {
+      display: inline-block;
+      vertical-align: middle;
     }
 
     #back:hover {
@@ -270,17 +280,43 @@
       <!-- Settings Page -->
       <div class="divSettings">
         <p>Music:</p>
-        <p style="font-size: 1vmin;" onclick="audioMain();">Main Theme</p>
-        <p style="font-size: 1vmin; margin-bottom: 0%;" onclick="audioYes();">Yes</p>
+        <div class="divMusic">
+          <img width="30%" src="Setting Buttons/Arrowleft.png" alt="Select Previous Music">
+        </div>
+        <div class="divMusic">
+          <p id="currentMusic">Main</p>
+        </div>
+        <div class="divMusic">
+          <img width="30%" src="Setting Buttons/Arrowright.png" alt="Select Next Music">
+        </div>
       </div>
+      <!-- Music Volume -->
       <div class="divSettings">
         <p>Music Volume</p>
-        <img class="musicVolume" id="musicVolume" onclick="toggleMusicVolume();" src="Sound Ajustment Images/Soundbar2.png" alt="Music Adjustment">
+        <div class="divPlusMinus">
+          <img width="20%" src="Setting Buttons/minus.png" onclick="decreaseMusicVolume();" alt="Decrease Music">
+        </div>
+        <div class="divPlusMinus">
+          <img class="musicVolume" id="musicVolume" onclick="toggleMusicVolume();" src="Sound Ajustment Images/Soundbar2.png" alt="Music Adjustment">
+        </div>
+        <div class="divPlusMinus">
+          <img width="20%" src="Setting Buttons/plus.png" onclick="increaseMusicVolume();" alt="Increase Music">
+        </div>
       </div>
+      <!-- Sound Volume -->
       <div class="divSettings">
-        <p>Sounds Volume</p>
-        <img class="soundVolume" id="soundVolume" onclick="toggleSoundVolume();" src="Sound Ajustment Images/Soundbar2.png" alt="Sound Adjustment">
+        <p>Sound Volume</p>
+        <div class="divPlusMinus">
+          <img width="20%" src="Setting Buttons/minus.png" onclick="decreaseSoundVolume();" alt="Decrease Music">
+        </div>
+        <div class="divPlusMinus">
+          <img class="soundVolume" id="soundVolume" onclick="toggleSoundVolume();" src="Sound Ajustment Images/Soundbar2.png" alt="Sound Adjustment">
+        </div>
+        <div class="divPlusMinus">
+          <img width="20%" src="Setting Buttons/plus.png" onclick="increaseSoundVolume();" alt="Increase Music">
+        </div>
       </div>
+      <!-- Back -->
       <div class="divSettings" onclick="closeSettings();" id="back">
         <p>Back</p>
       </div>
@@ -437,6 +473,38 @@
     }
   }
 
+  function increaseSoundVolume() {
+    if(souVolCount == 2) {
+      souVol.src = "Sound Ajustment Images/Soundbar3.png";
+      souVolCount = 3;
+    } else if(souVolCount == 3) {
+      souVol.src = "Sound Ajustment Images/Soundbar4.png";
+      souVolCount = 4;
+    } else if(souVolCount == 4) {
+      souVol.src = "Sound Ajustment Images/Soundbar5.png";
+      souVolCount = 5;
+    } else if(souVolCount == 1) {
+      souVol.src = "Sound Ajustment Images/Soundbar2.png";
+      souVolCount = 2;
+    }
+  }
+
+  function decreaseSoundVolume() {
+    if(souVolCount == 5) {
+      souVol.src = "Sound Ajustment Images/Soundbar4.png";
+      souVolCount = 4;
+    } else if(souVolCount == 4) {
+      souVol.src = "Sound Ajustment Images/Soundbar3.png";
+      souVolCount = 3;
+    } else if(souVolCount == 3) {
+      souVol.src = "Sound Ajustment Images/Soundbar2.png";
+      souVolCount = 2;
+    } else if(souVolCount == 2) {
+      souVol.src = "Sound Ajustment Images/Soundbar1.png";
+      souVolCount = 1;
+    }
+  }
+
   function toggleMusicVolume() {
     if(musVolCount == 2) {
       musVol.src = "Sound Ajustment Images/Soundbar3.png";
@@ -458,6 +526,46 @@
       musVol.src = "Sound Ajustment Images/Soundbar2.png";
       audio.volume = 0.4;
       musVolCount = 2;
+    }
+  }
+
+  function increaseMusicVolume() {
+    if(musVolCount == 2) {
+      musVol.src = "Sound Ajustment Images/Soundbar3.png";
+      audio.volume = 0.6;
+      musVolCount = 3;
+    } else if(musVolCount == 3) {
+      musVol.src = "Sound Ajustment Images/Soundbar4.png";
+      audio.volume = 0.8;
+      musVolCount = 4;
+    } else if(musVolCount == 4) {
+      musVol.src = "Sound Ajustment Images/Soundbar5.png";
+      audio.volume = 1;
+      musVolCount = 5;
+    } else if(musVolCount == 1) {
+      musVol.src = "Sound Ajustment Images/Soundbar2.png";
+      audio.volume = 0.4;
+      musVolCount = 2;
+    }
+  }
+
+  function decreaseMusicVolume() {
+    if(musVolCount == 5) {
+      musVol.src = "Sound Ajustment Images/Soundbar4.png";
+      audio.volume = 0.8;
+      musVolCount = 4;
+    } else if(musVolCount == 4) {
+      musVol.src = "Sound Ajustment Images/Soundbar3.png";
+      audio.volume = 0.6;
+      musVolCount = 3;
+    } else if(musVolCount == 3) {
+      musVol.src = "Sound Ajustment Images/Soundbar2.png";
+      audio.volume = 0.4;
+      musVolCount = 2;
+    } else if(musVolCount == 2) {
+      musVol.src = "Sound Ajustment Images/Soundbar1.png";
+      audio.volume = 0.2;
+      musVolCount = 1;
     }
   }
 
