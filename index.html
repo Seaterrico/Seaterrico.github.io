@@ -213,13 +213,10 @@
       width: 30%;
     }
 
-    .divMusic {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
     .divSettings1 {
       width: 100%;
+      display: inline-block;
+      vertical-align: middle;
       text-align: center;
       border: 1px solid transparent;
       display: none;
@@ -242,6 +239,11 @@
 
     a {
       color: blanchedalmond;
+    }
+
+    table, th, td {
+      border:1px transparent;
+      height: 60%;
     }
 
   </style>
@@ -292,17 +294,15 @@
       </div>
       <!-- Settings Page -->
       <!-- Music -->
-      <div height="30%" class="divSettings1">
+      <div class="divSettings1">
         <p>Music:</p>
-        <div class="divMusic">
-          <img width="30%" src="Setting Buttons/Arrowleft.png" onclick="nextSong();" alt="Select Previous Music">
-        </div>
-        <div class="divMusic">
-          <p id="currentMusic">March of the Seaterricans</p>
-        </div>
-        <div class="divMusic">
-          <img width="30%" src="Setting Buttons/Arrowright.png" onclick="nextSong();" alt="Select Next Music">
-        </div>
+        <table style="width:100%">
+        <tr>
+          <th style="width:30%"><img width="20%" src="Setting Buttons/Arrowleft.png" onmousedown="nextSong(this);" onmouseup="resetWidth(this);" alt="Select Previous Music"></th>
+          <th><p id="currentMusic">March of the Seaterricans</p></th> 
+          <th style="width:30%"><img width="20%" src="Setting Buttons/Arrowright.png" onmousedown="nextSong(this);" onmouseup="resetWidth(this);" alt="Select Next Music"></th>
+        </tr>
+        </table>
       </div>
       <!-- Music Volume -->
       <div class="divSettings">
@@ -606,7 +606,7 @@
     that.style.width = "20%";
   }
 
-  function nextSong() {
+  function nextSong(that) {
     if(curMusCount == 1) {
       curMus.innerHTML = "Yes"
       audioYes();
@@ -616,6 +616,8 @@
       audioMain();
       curMusCount = 1;;
     }
+
+    that.style.width = "15%";
   }
 
   function audioYes() {
